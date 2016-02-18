@@ -17,7 +17,7 @@ for s, d in zip(shapes, data_list):
     X.append(d[x_0:x_1, y_0:y_1][None])
 X = np.concatenate(X)
 X_masks = np.sum(X, axis=-1) > 0
-gsh_basis = GSHBasis(n_states=7)
+gsh_basis = GSHBasis(n_states=20, domain='cubic')
 anaylzer = MKSStructureAnalysis(basis=gsh_basis, n_components=3)
 y = anaylzer.fit_transform(X, confidence_index=X_masks)
 labels = [k[:-3] for k in keys[::-3]]
